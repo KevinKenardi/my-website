@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode } from "react"; 
+//import { ReactNode } from "react"; //never mentioned
 
-import { type Metadata } from "next";
+//import { type Metadata } from "next"; //never mentioned
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientNav from "../components/ClientNav";

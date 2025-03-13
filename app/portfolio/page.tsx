@@ -1,29 +1,42 @@
 "use client";
-import { motion } from "framer-motion"; // Tambahkan ini di bagian atas file
+//import { motion } from "framer-motion"; // Tambahkan ini di bagian atas file
+import { projects } from "../data/projects";
+import Image from "next/image";
 
-export default function Portfolio() {
-  const projects = [
-    { title: "Website Company Profile", description: "Membangun website untuk perusahaan teknologi." },
-    { title: "Aplikasi E-commerce", description: "Sistem penjualan online dengan integrasi payment gateway." },
-    { title: "Landing Page Digital Marketing", description: "Halaman landing untuk kampanye pemasaran." }
-  ];
-
+export default function PortfolioPage() {
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <h1 className="text-3xl font-bold text-gray-800">Portfolio</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            className="border rounded-lg p-4 shadow-lg bg-white"
-            whileHover={{ scale: 1.05 }}  // Efek membesar saat hover
-            whileTap={{ scale: 0.95 }}    // Efek mengecil saat diklik
-          >
-            <h2 className="text-xl font-semibold">{project.title}</h2>
-            <p className="text-gray-600 mt-2">{project.description}</p>
-          </motion.div>
-        ))}
+    <section className="max-w-5xl mx-auto py-10 px-5">
+  <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+    Portofolio
+  </h1>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {projects.map((project, index) => (
+      <div key={index} className="bg-white p-4 md:p-5 rounded-lg shadow-lg transition transform hover:scale-105 hover:shadow-2xl"> 
+        <Image 
+          src={project.image} 
+          alt={project.title} 
+          width={500} 
+          height={300} 
+          className="rounded-lg w-full object-cover"
+        />
+        <h2 className="text-xl md:text-2xl font-semibold mt-4">
+          {project.title}
+        </h2>
+        <p className="text-gray-700 text-sm md:text-base mt-2">
+          {project.description}
+        </p>
+        <div className="mt-4 flex gap-3">
+        <a href={project.link} className="text-blue-500 hover:text-blue-700 transition" target="_blank">
+            Live Demo
+          </a>
+          <a href={project.github} className="text-gray-500 hover:underline" target="_blank">
+            GitHub
+          </a>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</section>
+
   );
 }
