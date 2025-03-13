@@ -1,8 +1,5 @@
+import Homepage from "./Homepage";
+
 export default function Page() {
-  return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <h1 className="text-3xl font-bold text-gray-800">hi, welcome to my website</h1>
-      <p className="text-gray-600 mt-4">feel free to check around my project in here</p>
-    </div>
-  );
+  return <Homepage />;
 }

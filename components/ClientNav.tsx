@@ -1,22 +1,22 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
 
 export default function ClientNav() {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav className="flex justify-center space-x-4">
-      {["Home", "About", "Portfolio", "Contact"].map((item) => (
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+      {["hero", "portfolio", "media", "contact"].map((item) => (
+        <button
           key={item}
+          onClick={() => scrollToSection(item)}
+          className="hover:text-gray-400"
         >
-          <Link href={`/${item.toLowerCase()}`} className="hover:text-gray-400">
-            {item}
-          </Link>
-        </motion.div>
+          {item.charAt(0).toUpperCase() + item.slice(1)}
+        </button>
       ))}
     </nav>
   );

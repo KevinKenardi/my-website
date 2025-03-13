@@ -19,3 +19,23 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: gray;
+}
+
+/* globals.css */
+html {
+  scroll-behavior: smooth;
+}
+
