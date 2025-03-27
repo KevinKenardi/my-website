@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <header className="bg-gray-800 p-4 text-white">
           <ClientNav />
-        </header>
+        </header> 
         
         {/* Tambahkan animasi halaman */}
         <motion.div
@@ -41,7 +41,7 @@ export default function RootLayout({
         </motion.div>
 
         <footer className="bg-gray-800 text-white text-center p-4 mt-4">
-          <p>&copy; 2023 Your Name. All rights reserved.</p>
+          <p>&copy; Kevin Kenardi Portfolio </p>
         </footer>
       </body>
     </html>

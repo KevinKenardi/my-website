@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Section from "./Section";
-import ContactForm from "../components/ContactForm"; // Import Form Kontak
+import ContactForm from "../components/ContactForm";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import WhatsAppButton from "../components/WhatsAppButton"; // Path diperbaiki
+import WhatsAppButton from "../components/WhatsAppButton";
 
 const sections = [
   {
@@ -35,25 +35,47 @@ const sections = [
     id: "contact",
     title: "Let's Connect",
     content: "Reach me via email or LinkedIn.",
-    media: <ContactForm />, // Gunakan ContactForm di sini
+    media: <ContactForm />,
   },
 ];
 
 export default function HomePage() {
   const [darkMode, setDarkMode] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
+    // Load Dark Mode dari localStorage
     const savedMode = localStorage.getItem("darkMode");
     if (savedMode === "true") {
       setDarkMode(true);
       document.documentElement.classList.add("dark");
     }
-  }, []);
+
+    // Event Listener untuk navbar hide/show
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY === 0) {
+        setHidden(true); // Navbar hilang di atas
+      } else if (currentScrollY > lastScrollY) {
+        setHidden(false); // Navbar muncul saat scroll ke bawah
+      } else {
+        setHidden(true); // Navbar hilang saat scroll ke atas
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
     localStorage.setItem("darkMode", newMode.toString());
+
     if (newMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -67,8 +89,12 @@ export default function HomePage() {
       <ToastContainer />
 
       {/* Navbar */}
-      <nav className={`fixed top-0 left-0 w-full p-4 flex flex-wrap justify-center gap-2 sm:gap-4 z-50 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900 shadow-md"}`}>
-        {["hero", "portfolio", "media", "contact"].map((id) => (
+      <nav
+        className={`fixed top-0 left-0 w-full p-4 flex flex-wrap justify-center gap-2 sm:gap-4 z-50 transition-all duration-300 ${
+          hidden ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"
+        } ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900 shadow-md"}`}
+      >
+        {["Main Menu", "portfolio", "media", "contact"].map((id) => (
           <a
             key={id}
             href={`#${id}`}
