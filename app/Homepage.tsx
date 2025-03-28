@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 import Section from "./Section";
 import ContactForm from "../components/ContactForm";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import WhatsAppButton from "../components/WhatsAppButton";
 
 const sections = [
   {
-    id: "hero",
-    title: "Welcome",
+    id: "about me",
+    title: "welcome to my website",
     content: "Hi, I'm Kevin! A Web Developer.",
     image: "/images/cv1-2.jpg",
   },
@@ -18,7 +18,7 @@ const sections = [
     id: "portfolio",
     title: "My Work",
     content: "Here are my latest projects.",
-    image: "/images/cv1-2.jpg",
+    image: "/images/amchorizontal.png",
   },
   {
     id: "media",
@@ -94,7 +94,7 @@ export default function HomePage() {
           hidden ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"
         } ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900 shadow-md"}`}
       >
-        {["Main Menu", "portfolio", "media", "contact"].map((id) => (
+        {["about me", "portfolio", "media", "contact"].map((id) => (
           <a
             key={id}
             href={`#${id}`}

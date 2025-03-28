@@ -9,7 +9,7 @@ export default function ClientNav() {
 
   return (
     <nav className="flex justify-center space-x-4">
-      {["hero", "portfolio", "media", "contact"].map((item) => (
+      {["portfolio", "media", "contact"].map((item) => (
         <button
           key={item}
           onClick={() => scrollToSection(item)}

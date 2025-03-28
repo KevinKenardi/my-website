@@ -27,14 +27,16 @@ const Section: React.FC<SectionProps> = ({ section }) => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="my-16 text-center"
     >
-      <motion.h2
-        className="text-3xl font-bold mb-4"
+      <motion.h1
+        className={`mb-4 font-bold ${
+          section.title === "welcome to my website" ? "text-[40px] italic" : "text-4xl"
+        }`}
         initial={{ opacity: 0, x: -20 }}
         animate={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         {section.title}
-      </motion.h2>
+      </motion.h1>
 
       <motion.p
         className="text-lg"
@@ -62,7 +64,9 @@ const Section: React.FC<SectionProps> = ({ section }) => {
           alt={section.title}
           width={300}
           height={300}
-          className="rounded-full shadow-lg mx-auto mt-4 transition transform hover:rotate-6 hover:scale-110 duration-300"
+          className={`mx-auto mt-4 shadow-lg ${
+            section.id === "portfolio" ? "w-100 h-100 rounded-none" : "w-48 h-48 object-cover object-top rounded-full"
+          }`}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.6 }}
