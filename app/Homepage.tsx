@@ -3,22 +3,30 @@
 import { useState, useEffect } from "react";
 import Section from "./Section";
 import ContactForm from "../components/ContactForm";
-import { ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import WhatsAppButton from "../components/WhatsAppButton";
 
 const sections = [
   {
     id: "about me",
-    title: "Hey, I'm Kevin Kenardi. Here, you can check out what I'm working on. I try my best to create things with ❤ ",
+    title: "Hey, I'm Kevin Kenardi. Here, you can check out what I'm working on.",
     content: "",
     image: "/images/cv1-2.jpg",
   },
   {
     id: "portfolio",
     title: "My Projects",
-    content: "I love to create things, and I'm always working on something new! You can view some of my favorite projects below.",
-    image: "/images/amchorizontal.png",
+    projects: [
+      {
+        name: "Project 1",
+        image: "/images/amchorizontal.png", // Gambar untuk Project 1
+      },
+      {
+        name: "Project 2",
+        image: "", // Kosong untuk diisi nanti
+      },
+    ],
   },
   {
     id: "media",
@@ -90,7 +98,7 @@ export default function HomePage() {
 
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full p-4 flex flex-wrap justify-center gap-2 sm:gap-4 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full p-4 flex flex-wrap justify-center gap-4 z-50 transition-all duration-300 ${
           hidden ? "opacity-0 -translate-y-full" : "opacity-100 translate-y-0"
         } ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-900 shadow-md"}`}
       >
@@ -98,7 +106,7 @@ export default function HomePage() {
           <a
             key={id}
             href={`#${id}`}
-            className="px-4 py-2 rounded transition transform hover:scale-110 active:scale-95 duration-300"
+            className="px-6 py-2 rounded-lg text-lg font-medium transition transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 active:scale-95 duration-300"
           >
             {id.charAt(0).toUpperCase() + id.slice(1)}
           </a>
@@ -106,7 +114,7 @@ export default function HomePage() {
         {/* Tombol Dark Mode */}
         <button
           onClick={toggleDarkMode}
-          className="ml-4 px-4 py-2 rounded border transition transform hover:scale-110 active:scale-95 duration-300"
+          className="ml-4 px-6 py-2 rounded-lg border text-lg font-medium transition transform hover:scale-105 hover:bg-gray-100 dark:hover:bg-gray-700 active:scale-95 duration-300"
         >
           {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
         </button>
