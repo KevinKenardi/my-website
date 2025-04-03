@@ -10,14 +10,14 @@ import WhatsAppButton from "../components/WhatsAppButton";
 const sections = [
   {
     id: "about me",
-    title: "welcome to my website",
-    content: "Hi, I'm Kevin! A Web Developer.",
+    title: "Hey, I'm Kevin Kenardi. Here, you can check out what I'm working on. I try my best to create things with ❤ ",
+    content: "",
     image: "/images/cv1-2.jpg",
   },
   {
     id: "portfolio",
-    title: "My Work",
-    content: "Here are my latest projects.",
+    title: "My Projects",
+    content: "I love to create things, and I'm always working on something new! You can view some of my favorite projects below.",
     image: "/images/amchorizontal.png",
   },
   {
@@ -25,7 +25,7 @@ const sections = [
     title: "Media",
     content: "Check out this video!",
     media: (
-      <video autoPlay loop muted className="w-full max-w-lg rounded-lg shadow-lg">
+      <video autoPlay loop muted className="w-full max-w-lg mx-auto rounded-lg shadow-lg">
         <source src="/videos/gabypiercing.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -84,7 +84,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col items-center justify-center ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}>
+    <div className={`min-h-screen flex flex-col ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}`}>
       {/* Toast Notification */}
       <ToastContainer />
 

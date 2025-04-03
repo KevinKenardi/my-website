@@ -39,4 +39,10 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Tambahkan di file CSS Anda */
+.text-left-tight {
+  margin-left: 0;
+  padding-left: 0;
+}
+
 
