@@ -7,11 +7,11 @@ import React from "react";
 interface SectionProps {
   section: {
     id: string;
-    title: string;
-    content?: string; // Opsional
-    image?: string; // Opsional
-    media?: React.ReactNode; // Opsional
-    projects?: { name: string; image?: string }[]; // Opsional
+    title: string | React.ReactNode; // <- perbaikan di sini
+    content?: string;
+    image?: string;
+    media?: React.ReactNode;
+    projects?: { name: string; image?: string }[];
   };
 }
 
@@ -23,7 +23,7 @@ const Section: React.FC<SectionProps> = ({ section }) => {
 
     const imageProps = {
       src: section.image,
-      alt: section.title,
+      alt: typeof section.title === "string" ? section.title : "Section Image",
       initial: { opacity: 0, scale: 0.8 },
       animate: inView ? { opacity: 1, scale: 1 } : {},
       transition: { duration: 0.7, delay: 0.6 },
@@ -76,6 +76,7 @@ const Section: React.FC<SectionProps> = ({ section }) => {
               className="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition transform hover:scale-105 hover:shadow-xl"
             >
               {project.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={project.image}
                   alt={project.name}

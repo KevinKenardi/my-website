@@ -10,7 +10,11 @@ import WhatsAppButton from "../components/WhatsAppButton";
 const sections = [
   {
     id: "about me",
-    title: "Hey, I'm Kevin Kenardi. Here, you can check out what I'm working on.",
+    title: (
+      <>
+        Hey, I&apos;m <span className="text-blue">Kevin Kenardi</span>. Here, you can check out what I&apos;m working on.
+      </>
+    ),
     content: "",
     image: "/images/cv1-2.jpg",
   },
